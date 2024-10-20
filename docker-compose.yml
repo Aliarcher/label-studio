@@ -1,0 +1,62 @@
+version: '3'
+
+networks:
+  labelstudionetwork:
+    driver: bridge
+
+services:
+  postgres:
+    image: postgres:14.5
+    container_name: postgres
+    environment:
+      POSTGRES_DB: labelstudio
+      POSTGRES_USER: labelstudio
+      POSTGRES_PASSWORD: labelstudio_password
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5437:5432"
+    networks:
+      - labelstudionetwork
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U labelstudio"]
+      interval: 10s
+      retries: 5
+      timeout: 5s
+  labelstudio:
+    image: heartexlabs/label-studio:latest
+    container_name: labelstudio
+    depends_on:
+      - postgres
+    environment:
+      #DJANGO_DB: default
+      #DJANGO_DB_ENGINE: django.db.backends.postgresql
+      #DJANGO_DB_HOST: postgres
+      #DJANGO_DB_PORT: 5437
+      #DJANGO_DB_NAME: labelstudio
+      #DJANGO_DB_USER: labelstudio
+      #DJANGO_DB_PASSWORD: labelstudio_password
+      DJANGO_DB: default
+      DJANGO_DB_ENGINE: django.db.backends.postgresql
+      POSTGRE_NAME: labelstudio
+      POSTGRE_USER: labelstudio
+      POSTGRE_PASSWORD: labelstudio_password
+      POSTGRE_PORT: 5432
+      POSTGRE_HOST: postgres
+
+     # LABEL_STUDIO_ACCESS_TOKEN: your-secret-token # Optional, for secure access
+    ports:
+      - "8090:8080"
+    networks:
+      - labelstudionetwork
+    command: >
+      /bin/bash -c "
+      python3 label_studio/manage.py migrate --noinput &&
+      python3 label_studio/manage.py runserver 0.0.0.0:8080"
+    volumes:
+      - labelstudio_data:/label-studio/data
+volumes:
+  postgres_data:
+  labelstudio_data:
+

@@ -30,21 +30,13 @@ services:
     depends_on:
       - postgres
     environment:
-      #DJANGO_DB: default
-      #DJANGO_DB_ENGINE: django.db.backends.postgresql
-      #DJANGO_DB_HOST: postgres
-      #DJANGO_DB_PORT: 5437
-      #DJANGO_DB_NAME: labelstudio
-      #DJANGO_DB_USER: labelstudio
-      #DJANGO_DB_PASSWORD: labelstudio_password
       DJANGO_DB: default
       DJANGO_DB_ENGINE: django.db.backends.postgresql
+      POSTGRE_HOST: postgres
+      POSTGRE_PORT: 5432
       POSTGRE_NAME: labelstudio
       POSTGRE_USER: labelstudio
       POSTGRE_PASSWORD: labelstudio_password
-      POSTGRE_PORT: 5432
-      POSTGRE_HOST: postgres
-
      # LABEL_STUDIO_ACCESS_TOKEN: your-secret-token # Optional, for secure access
     ports:
       - "8090:8080"

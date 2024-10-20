@@ -3,6 +3,9 @@ version: '3'
 networks:
   labelstudionetwork:
     driver: bridge
+volumes:
+  postgres_data:
+  labelstudio_data:    
 
 services:
   postgres:
@@ -48,7 +51,4 @@ services:
       python3 label_studio/manage.py runserver 0.0.0.0:8080"
     volumes:
       - labelstudio_data:/label-studio/data
-volumes:
-  postgres_data:
-  labelstudio_data:
 

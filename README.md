@@ -35,7 +35,7 @@ This setup consists of two main services:
 3. Run the following command to start the services:
 
     ```bash
-    docker-compose up -d
+    docker compose up -d
     ```
 
 4. After all services are up, access Label Studio in your browser at: `http://localhost:8090`.
@@ -69,4 +69,4 @@ This setup uses Docker volumes to persist data:
 To stop the running services, run:
 
 ```bash
-docker-compose down
+docker compose down

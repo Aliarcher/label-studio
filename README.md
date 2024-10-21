@@ -1,6 +1,8 @@
 # Label Studio with PostgreSQL - Docker Setup
 
 ![image](https://github.com/user-attachments/assets/ed05c29f-35b4-4ed3-9251-7d91a3558d2d)
+![image](https://github.com/user-attachments/assets/afdc0769-4d7d-4182-be50-f1a08ce9f456)
+
 
 This Docker Compose configuration sets up Label Studio with PostgreSQL as the backend database. Label Studio is an open-source data labeling tool that supports various data types. PostgreSQL is used as the database to store project and annotation data.
 

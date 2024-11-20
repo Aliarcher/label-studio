@@ -38,25 +38,24 @@
           <Choice name='Valence' value="ظرفیت"/>
           <Choice name='Engagement' value="درگیرشدن"/>
         </Choices>
+        <!-- تنظیمات برای برانگیختگی -->
+        <View visibleWhen="choice-selected" whenTagName="Labeling" className="rtl" whenChoiceValue="برانگیختگی">
+          <Header size="6" value="لطفاً سطح برانگیختگی را انتخاب کنید"/>
+          <Rating name="arousal_rating" toName="audio" maxRating="5" icon="star" />
+        </View>
+
+        <!-- تنظیمات برای ظرفیت -->
+        <View visibleWhen="choice-selected" whenTagName="Labeling" className="rtl" whenChoiceValue="ظرفیت">
+          <Header size="6" value="لطفاً سطح ظرفیت را انتخاب کنید"/>
+          <Rating name="valence_rating" toName="audio" maxRating="5" icon="star" />
+        </View>
+
+        <!-- تنظیمات برای درگیرشدن -->
+        <View visibleWhen="choice-selected" whenTagName="Labeling" className="rtl" whenChoiceValue="درگیرشدن">
+          <Header size="6" value="لطفاً سطح درگیر شدن را انتخاب کنید"/>
+          <Rating name="engagement_rating" toName="audio" maxRating="5" icon="star" />
+        </View>
       </View>
-    </View>
-
-    <!-- تنظیمات برای برانگیختگی -->
-    <View visibleWhen="choice-selected" whenTagName="Labeling" whenChoiceValue="برانگیختگی">
-      <Header size="6" value="لطفاً سطح برانگیختگی را انتخاب کنید"/>
-      <Rating name="arousal_rating" toName="audio" maxRating="5" icon="star" />
-    </View>
-
-    <!-- تنظیمات برای ظرفیت -->
-    <View visibleWhen="choice-selected" whenTagName="Labeling" whenChoiceValue="ظرفیت">
-      <Header size="6" value="لطفاً سطح ظرفیت را انتخاب کنید"/>
-      <Rating name="valence_rating" toName="audio" maxRating="5" icon="star" />
-    </View>
-
-    <!-- تنظیمات برای درگیرشدن -->
-    <View visibleWhen="choice-selected" whenTagName="Labeling" whenChoiceValue="درگیرشدن">
-      <Header size="6" value="لطفاً سطح درگیر شدن را انتخاب کنید"/>
-      <Rating name="engagement_rating" toName="audio" maxRating="5" icon="star" />
     </View>
   </View>
 </View>

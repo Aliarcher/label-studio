@@ -1,0 +1,62 @@
+<View>
+  <Style>.center {
+    display: flex;
+    align-items: center;
+    padding: 0px 10px;
+    }</Style>
+  <Style> .rtl {direction:rtl }</Style>
+  <Style>.audioclass {
+    display: block;
+    }
+    .audio-container{
+      flex-direction: row;
+      justify-content: flex-start;
+    }
+  </Style>
+  <Style>.greenborder {
+    margin: 10px;
+    padding: 0px 10px;
+    border: 3px solid green;
+    }</Style>
+  <Style>.grayborder {
+    margin: 10px;
+    padding: 0px 10px;
+    border: 3px solid gray;
+    }</Style>
+
+  <View className="grayborder">
+    <View className="audio-container">
+      <View className="audioclass">
+        <Audio name="audio" value="$audio_path" zoom="true" hotkey="ctrl+enter" />
+      </View>
+    </View>
+    <View className="rtl">  
+      <View className="greenborder">
+        <Header size="6" value="مولفه برچسب زنی را انتخاب کنید"/>
+        <Choices name="Labeling" toName="audio" showInLine="true">
+          <Choice name='Arousal' value="برانگیختگی"/>
+          <Choice name='Valence' value="ظرفیت"/>
+          <Choice name='Engagement' value="درگیرشدن"/>
+        </Choices>
+      </View>
+    </View>
+
+    <!-- تنظیمات برای برانگیختگی -->
+    <View visibleWhen="choice-selected" whenTagName="Labeling" whenChoiceValue="برانگیختگی">
+      <Header size="6" value="لطفاً سطح برانگیختگی را انتخاب کنید"/>
+      <Rating name="arousal_rating" toName="audio" maxRating="5" icon="star" />
+    </View>
+
+    <!-- تنظیمات برای ظرفیت -->
+    <View visibleWhen="choice-selected" whenTagName="Labeling" whenChoiceValue="ظرفیت">
+      <Header size="6" value="لطفاً سطح ظرفیت را انتخاب کنید"/>
+      <Rating name="valence_rating" toName="audio" maxRating="5" icon="star" />
+    </View>
+
+    <!-- تنظیمات برای درگیرشدن -->
+    <View visibleWhen="choice-selected" whenTagName="Labeling" whenChoiceValue="درگیرشدن">
+      <Header size="6" value="لطفاً سطح درگیر شدن را انتخاب کنید"/>
+      <Rating name="engagement_rating" toName="audio" maxRating="5" icon="star" />
+    </View>
+  </View>
+</View>

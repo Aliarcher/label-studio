@@ -34,27 +34,35 @@
       <View className="greenborder">
         <Header size="6" value="مولفه برچسب زنی را انتخاب کنید"/>
         <Choices name="Labeling" toName="audio" showInLine="true">
-          <Choice name='Arousal' value="برانگیختگی"/>
-          <Choice name='Valence' value="ظرفیت"/>
-          <Choice name='Engagement' value="درگیرشدن"/>
+          <Choice value="برانگیختگی"/>
+          <Choice value="ظرفیت"/>
+          <Choice value="درگیرشدن"/>
+          <Choice value="واقعی یا تقلبی بودن"/>
         </Choices>
         <!-- تنظیمات برای برانگیختگی -->
         <View visibleWhen="choice-selected" whenTagName="Labeling" className="rtl" whenChoiceValue="برانگیختگی">
           <Header size="6" value="لطفاً سطح برانگیختگی را انتخاب کنید"/>
-          <Rating name="arousal_rating" toName="audio" maxRating="5" icon="star" />
+          <Rating name='Arousal' toName="audio" maxRating="5" icon="star" />
         </View>
 
         <!-- تنظیمات برای ظرفیت -->
         <View visibleWhen="choice-selected" whenTagName="Labeling" className="rtl" whenChoiceValue="ظرفیت">
           <Header size="6" value="لطفاً سطح ظرفیت را انتخاب کنید"/>
-          <Rating name="valence_rating" toName="audio" maxRating="5" icon="star" />
+          <Rating name='Valence' toName="audio" maxRating="5" icon="star" />
         </View>
 
         <!-- تنظیمات برای درگیرشدن -->
         <View visibleWhen="choice-selected" whenTagName="Labeling" className="rtl" whenChoiceValue="درگیرشدن">
           <Header size="6" value="لطفاً سطح درگیر شدن را انتخاب کنید"/>
-          <Rating name="engagement_rating" toName="audio" maxRating="5" icon="star" />
+          <Rating name='Engagement' toName="audio" maxRating="5" icon="star" />
         </View>
+        <View visibleWhen="choice-selected" whenTagName="Labeling" className="rtl" whenChoiceValue="واقعی یا تقلبی بودن">
+          <Header size="6" value="لطفاً واقعی یا تقلبی بودن گفتار را انتخاب کنید"/>
+          <Choices name="RealOrFake" toName="audio" showInLine="true">
+                <Choice value="واقعی"/>
+                <Choice value="تقلبی"/>
+            </Choices>
+        </View>  
       </View>
     </View>
   </View>

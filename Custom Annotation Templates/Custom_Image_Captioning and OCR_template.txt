@@ -1,0 +1,52 @@
+<View>
+  <Style>.center { display: flex; align-items: center; padding: 0px 10px; }</Style>
+  <Style>.rtl { direction: rtl }</Style>
+  <Style>.img { display: block; }
+         .image-container { flex-direction: row; justify-content: flex-start; }
+  </Style>
+  <Style>.greenborder { margin: 10px; padding: 0px 10px; border: 3px solid green; }</Style>
+  <Style>.grayborder { margin: 10px; padding: 0px 10px; border: 3px solid gray; }</Style>
+
+  <View className="grayborder">
+    <View className="image-container">
+      <View className="img">
+        <Image name="image" value="$image" class="center"/>
+      </View>
+    </View>
+
+    <View className="rtl">
+      <Header value="توصیف انگلیسی عکس بالا را:" style="text-align: right"/>
+      <TextArea name="english_captioning" toName="image" value="$english_captioning"
+                maxSubmissions="1" style="text-align: right" editable="false"/>
+      <View className="greenborder">
+        <View className="greenborder">
+          <Header size="6" value="دارای متن هست یا خیر؟"/>
+          <Choices name="text_in_image" toName="image" showInLine="true">
+            <Choice value="دارای متن"/>
+            <Choice value="بدون متن"/>
+          </Choices>
+        </View> 
+
+        <Header value="عکس بالا را به فارسی توصیف کنید:" style="text-align: right"/>
+        <TextArea name="caption" toName="image" placeholder="توصیف مورد نظر را وارد کنید..." 
+                  rows="5" maxSubmissions="1" style="text-align: right"/>
+    	</View>
+    </View>
+  </View>
+
+  <!-- OCR Section, visible only when 'دارای متن' is selected -->
+  <View visibleWhen="choice-selected" whenTagName="text_in_image" whenChoiceValue="دارای متن">
+    <Labels name="label" toName="image">
+      <Label value="نوشته" background="green"/>
+      <Label value="دست نوشته" background="blue"/>
+    </Labels>
+
+    <Rectangle name="bbox" toName="image" strokeWidth="3"/>
+    <Polygon name="poly" toName="image" strokeWidth="3"/>
+
+    <TextArea name="transcription" toName="image"
+              editable="true" perRegion="true" required="true"
+              maxSubmissions="1" rows="5"
+              placeholder="Recognized Text" displayMode="region-list"/>
+  </View>
+</View>
